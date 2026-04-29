@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>కావేరి 💛 సుధాకర్ | Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+Telugu:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0D0305;
+  --bg2:#180608;
+  --maroon:#7A1010;
+  --maroon2:#A01818;
+  --gold:#D4942A;
+  --gold2:#F0C84A;
+  --gold3:#FBE9AA;
+  --cream:#FDF4E0;
+  --white:#FFF9F0;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'Cormorant Garamond',serif;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ===== FLOATING PETALS ===== */
+.petals-canvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  overflow:hidden;
+}
+.petal{
+  position:absolute;
+  top:-60px;
+  font-size:18px;
+  animation:petalFall linear infinite;
+  opacity:0;
+  filter:drop-shadow(0 0 4px rgba(212,148,42,.4));
+}
+@keyframes petalFall{
+  0%{opacity:0;transform:translateY(0) rotate(0deg) translateX(0)}
+  10%{opacity:.7}
+  90%{opacity:.4}
+  100%{opacity:0;transform:translateY(110vh) rotate(720deg) translateX(80px)}
+}
+
+/* ===== OPENING SCREEN ===== */
+#opening{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  transition:opacity .8s ease, transform .8s ease;
+}
+#opening.hide{opacity:0;transform:scale(1.05);pointer-events:none}
+.open-ganesh{font-size:70px;animation:openPulse 2s ease-in-out infinite}
+@keyframes openPulse{
+  0%,100%{filter:drop-shadow(0 0 10px rgba(212,148,42,.4))}
+  50%{filter:drop-shadow(0 0 30px rgba(212,148,42,.9))}
+}
+.open-title{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:22px;
+  color:var(--gold2);
+  letter-spacing:2px;
+  text-align:center;
+  opacity:0;
+  animation:fadeUp .8s .5s ease both;
+}
+.open-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;
+  color:rgba(251,233,170,.6);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  opacity:0;
+  animation:fadeUp .8s .8s ease both;
+}
+.open-btn{
+  margin-top:16px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--bg);
+  border:none;
+  padding:13px 40px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  cursor:pointer;
+  opacity:0;
+  animation:fadeUp .8s 1.1s ease both;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s;
+}
+.open-btn::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  transform:translateX(-100%);
+  transition:transform .5s;
+}
+.open-btn:hover::before{transform:translateX(100%)}
+.open-btn:hover{transform:scale(1.04)}
+
+/* ===== MAIN CONTENT ===== */
+#main{opacity:0;transition:opacity .8s ease}
+#main.show{opacity:1}
+
+/* ===== SECTION BASE ===== */
+section{position:relative;z-index:1;overflow:hidden}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 24px;
+  position:relative;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 0%, #3D0A0A 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, #2A0606 0%, transparent 60%),
+    var(--bg);
+}
+
+/* SVG mandala bg */
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Ccircle cx='200' cy='200' r='190' fill='none' stroke='rgba(212,148,42,0.06)' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='160' fill='none' stroke='rgba(212,148,42,0.05)' stroke-width='1'/%3E%3Ccircle cx='200' cy='200' r='130' fill='none' stroke='rgba(212,148,42,0.04)' stroke-width='1'/%3E%3Cpath d='M200 10 L210 190 L200 200 L190 190 Z' fill='rgba(212,148,42,0.03)'/%3E%3Cpath d='M200 390 L210 210 L200 200 L190 210 Z' fill='rgba(212,148,42,0.03)'/%3E%3Cpath d='M10 200 L190 210 L200 200 L190 190 Z' fill='rgba(212,148,42,0.03)'/%3E%3Cpath d='M390 200 L210 210 L200 200 L210 190 Z' fill='rgba(212,148,42,0.03)'/%3E%3C/svg%3E") center/600px repeat;
+  pointer-events:none;
+  animation:rotateSlow 80s linear infinite;
+}
+@keyframes rotateSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.hero-bless{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:14px;
+  color:var(--gold);
+  letter-spacing:3px;
+  opacity:0;
+  animation:fadeUp .8s .2s ease both;
+}
+.hero-divline{
+  width:120px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:14px auto;
+  opacity:0;
+  animation:fadeUp .6s .4s ease both;
+}
+.hero-ganesh{
+  font-size:56px;
+  margin-bottom:8px;
+  opacity:0;
+  animation:fadeUp .8s .3s ease both, openPulse 3s 1s ease-in-out infinite;
+}
+
+.hero-invite-text{
+  font-size:13px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(251,233,170,.6);
+  margin-bottom:6px;
+  opacity:0;
+  animation:fadeUp .8s .5s ease both;
+}
+
+.hero-host{
+  font-size:18px;
+  font-weight:400;
+  color:var(--gold3);
+  font-style:italic;
+  margin-bottom:4px;
+  opacity:0;
+  animation:fadeUp .8s .6s ease both;
+}
+.hero-addr{
+  font-size:12px;
+  color:rgba(251,233,170,.5);
+  letter-spacing:1px;
+  margin-bottom:28px;
+  opacity:0;
+  animation:fadeUp .8s .65s ease both;
+}
+.hero-request{
+  font-size:14px;
+  color:rgba(253,244,224,.65);
+  max-width:340px;
+  line-height:1.7;
+  margin:0 auto 32px;
+  opacity:0;
+  animation:fadeUp .8s .7s ease both;
+}
+
+/* Couple names */
+.couple-wrap{
+  position:relative;
+  margin:8px 0 28px;
+  opacity:0;
+  animation:fadeUp 1s .8s ease both;
+}
+.couple-wrap::before,
+.couple-wrap::after{
+  content:'';
+  position:absolute;
+  left:50%;transform:translateX(-50%);
+  height:1px;
+  width:200px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.couple-wrap::before{top:0}
+.couple-wrap::after{bottom:0}
+
+.bride-nm{
+  font-family:'Great Vibes',cursive;
+  font-size:68px;
+  line-height:1;
+  background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold3),var(--gold2),var(--gold));
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 3s linear infinite;
+  padding:16px 0 0;
+}
+@keyframes shimmer{0%{background-position:0%}100%{background-position:200%}}
+.weds-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:2px 0;
+  font-size:14px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:rgba(212,148,42,.7);
+}
+.weds-line{width:60px;height:1px;background:rgba(212,148,42,.4)}
+.groom-nm{
+  font-family:'Great Vibes',cursive;
+  font-size:68px;
+  line-height:1;
+  background:linear-gradient(135deg,var(--gold3),var(--gold2),var(--gold),var(--gold2),var(--gold3));
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 3s .5s linear infinite;
+  padding:0 0 16px;
+}
+
+.hero-date-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:rgba(212,148,42,.1);
+  border:1px solid rgba(212,148,42,.35);
+  padding:10px 28px;
+  font-size:15px;
+  color:var(--gold2);
+  font-style:italic;
+  letter-spacing:1px;
+  opacity:0;
+  animation:fadeUp .8s 1s ease both;
+}
+.hero-date-badge span{color:var(--gold3);font-weight:600;font-style:normal}
+
+.scroll-hint{
+  position:absolute;
+  bottom:28px;
+  left:50%;transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(212,148,42,.4);
+  opacity:0;
+  animation:fadeUp .8s 1.5s ease both;
+}
+.scroll-arrow{
+  width:1px;height:36px;
+  background:linear-gradient(180deg,rgba(212,148,42,.5),transparent);
+  animation:scrollPulse 1.5s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.5}50%{transform:scaleY(1.3);opacity:1}}
+
+/* ===== SECTION COMMON ===== */
+.sec-pad{padding:70px 24px}
+.sec-title{
+  text-align:center;
+  margin-bottom:40px;
+}
+.sec-title-top{
+  font-size:10px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.7;
+  display:block;
+  margin-bottom:8px;
+}
+.sec-title h2{
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--gold3);
+  line-height:1.2;
+}
+.sec-title-line{
+  width:80px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:12px auto 0;
+}
+
+/* ===== PARENTS SECTION ===== */
+.sec-parents{
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 50%,rgba(122,16,16,.2),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 50%,rgba(122,16,16,.15),transparent),
+    var(--bg2);
+}
+.parents-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  max-width:640px;
+  margin:0 auto;
+}
+.p-divider{
+  grid-column:1/-1;
+  text-align:center;
+  padding:10px 0;
+  font-size:22px;
+  color:var(--gold);
+  opacity:.4;
+}
+.p-box{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(212,148,42,.15);
+  padding:26px 20px;
+  text-align:center;
+  transition:background .3s;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease,transform .6s ease,background .3s;
+}
+.p-box.visible{opacity:1;transform:none}
+.p-box:hover{background:rgba(212,148,42,.05)}
+.p-side{
+  font-size:9px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.6;
+  display:block;
+  margin-bottom:10px;
+}
+.p-names{
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  font-style:italic;
+  color:var(--gold3);
+  line-height:1.6;
+}
+.p-village{
+  font-size:12px;
+  color:rgba(251,233,170,.45);
+  margin-top:8px;
+  line-height:1.5;
+}
+
+/* ===== EVENTS SECTION ===== */
+.sec-events{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 50%,rgba(61,8,8,.6),transparent);
+}
+.events-wrap{
+  max-width:640px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.ev-card{
+  position:relative;
+  padding:28px 28px 24px;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(212,148,42,.2);
+  overflow:hidden;
+  opacity:0;
+  transform:translateX(-30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.ev-card.visible{opacity:1;transform:none}
+.ev-card::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(180deg,transparent,var(--gold),transparent);
+}
+.ev-card::after{
+  content:'';
+  position:absolute;
+  right:-40px;bottom:-40px;
+  width:140px;height:140px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(212,148,42,.06),transparent);
+  pointer-events:none;
+}
+.ev-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:20px;
+}
+.ev-emoji{font-size:30px}
+.ev-head-text{}
+.ev-head-en{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  font-style:italic;
+  color:var(--gold2);
+}
+.ev-head-te{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:13px;
+  color:rgba(251,233,170,.5);
+  margin-top:2px;
+}
+
+.ev-rows{display:flex;flex-direction:column;gap:12px}
+.ev-row{display:flex;gap:14px;align-items:flex-start}
+.ev-ico-wrap{
+  width:34px;height:34px;
+  background:rgba(212,148,42,.1);
+  border:1px solid rgba(212,148,42,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;
+  flex-shrink:0;
+}
+.ev-info{}
+.ev-info-lbl{
+  font-size:9.5px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+  opacity:.7;
+  display:block;
+  margin-bottom:3px;
+}
+.ev-info-val{
+  font-size:14px;
+  color:var(--cream);
+  line-height:1.5;
+}
+.ev-info-val strong{color:var(--gold2)}
+.nakshatra-pill{
+  display:inline-block;
+  margin-top:12px;
+  background:rgba(212,148,42,.08);
+  border:1px solid rgba(212,148,42,.3);
+  border-radius:30px;
+  padding:5px 16px;
+  font-size:12px;
+  color:var(--gold2);
+  font-style:italic;
+  letter-spacing:.5px;
+}
+
+/* ===== LUNCH SECTION ===== */
+.sec-lunch{
+  background:var(--bg2);
+  background-image:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(90,10,10,.4),transparent);
+  padding:50px 24px;
+}
+.lunch-inner{
+  max-width:500px;
+  margin:0 auto;
+  text-align:center;
+  background:rgba(212,148,42,.06);
+  border:1px solid rgba(212,148,42,.25);
+  padding:36px 28px;
+  position:relative;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.lunch-inner.visible{opacity:1;transform:none}
+.lunch-inner::before,.lunch-inner::after{
+  content:'✦';
+  position:absolute;
+  color:var(--gold);
+  font-size:14px;
+  opacity:.4;
+}
+.lunch-inner::before{top:12px;left:16px}
+.lunch-inner::after{bottom:12px;right:16px}
+.lunch-emoji{font-size:44px;margin-bottom:14px;display:block}
+.lunch-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+  font-style:italic;
+  color:var(--gold2);
+  margin-bottom:10px;
+}
+.lunch-details{
+  font-size:15px;
+  color:var(--cream);
+  line-height:1.8;
+}
+.lunch-details strong{color:var(--gold2)}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:
+    linear-gradient(180deg,var(--bg) 0%,#0A0202 100%);
+  padding:60px 24px 40px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.footer::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.footer-om{
+  font-size:48px;
+  display:block;
+  margin-bottom:16px;
+  animation:openPulse 4s ease-in-out infinite;
+}
+.footer-te{
+  font-family:'Noto Serif Telugu',serif;
+  font-size:18px;
+  color:var(--gold2);
+  margin-bottom:6px;
+}
+.footer-te2{
+  font-size:13px;
+  color:rgba(251,233,170,.5);
+  margin-bottom:24px;
+  font-style:italic;
+}
+.footer-from{
+  font-size:12px;
+  letter-spacing:2px;
+  color:rgba(251,233,170,.4);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.footer-names{
+  font-family:'Playfair Display',serif;
+  font-size:16px;
+  font-style:italic;
+  color:var(--gold3);
+  margin-bottom:24px;
+  line-height:1.7;
+}
+.footer-numbers{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px 20px;
+  margin-bottom:32px;
+}
+.footer-num{
+  font-size:14px;
+  color:var(--gold2);
+  letter-spacing:.5px;
+  display:flex;align-items:center;gap:6px;
+}
+.footer-num::before{content:'📞';font-size:12px}
+.footer-stamp{
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(212,148,42,.2);
+  border-top:1px solid rgba(212,148,42,.1);
+  padding-top:20px;
+}
+
+/* ===== UTILITIES ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:none}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+  .bride-nm,.groom-nm{font-size:52px}
+  .parents-grid{grid-template-columns:1fr}
+  .p-divider{display:none}
+  .sec-pad{padding:50px 20px}
+  .ev-card{padding:22px 18px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- PETALS -->
+<div class="petals-canvas" id="petalsCanvas"></div>
+
+<!-- OPENING SCREEN -->
+<div id="opening">
+  <div class="open-ganesh">🙏</div>
+  <div class="open-title">ఆలా వారి పెళ్లి శుభలేఖ</div>
+  <div class="open-sub">A Wedding Invitation</div>
+  <button class="open-btn" onclick="openInvitation()">Open Invitation ✦</button>
+</div>
+
+<!-- MAIN INVITATION -->
+<div id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bless">శ్రీరస్తు · శుభమస్తు · కళ్యాణమస్తు</div>
+    <div class="hero-divline"></div>
+    <div class="hero-ganesh">🕉️</div>
+
+    <div class="hero-invite-text">Together with their families</div>
+    <div class="hero-host">Sri Ala Subbarayudu &amp; Srimathi Sujatha</div>
+    <div class="hero-addr">Nunnamchinthala Village · Udayagiri Mandal · Nellore</div>
+    <div class="hero-request">joyfully invite you to celebrate the auspicious wedding of their beloved younger daughter</div>
+
+    <div class="couple-wrap">
+      <div class="bride-nm">Kaveri</div>
+      <div class="weds-row">
+        <div class="weds-line"></div>
+        <span>weds</span>
+        <div class="weds-line"></div>
+      </div>
+      <div class="groom-nm">Sudhakar</div>
+    </div>
+
+    <div class="hero-date-badge">
+      🌸 &nbsp; Thursday &nbsp; <span>7th May 2026</span> &nbsp; 🌸
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll to explore</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- PARENTS -->
+  <section class="sec-parents sec-pad">
+    <div class="sec-title">
+      <span class="sec-title-top">Blessings &amp; Family</span>
+      <h2>With the Grace of Their Families</h2>
+      <div class="sec-title-line"></div>
+    </div>
+    <div class="parents-grid">
+      <div class="p-box reveal">
+        <span class="p-side">Bride's Side</span>
+        <div class="p-names">Sri Ala Subbarayudu<br>Smt. Sujatha</div>
+        <div class="p-village">Nunnamchinthala Village<br>Udayagiri Mandal, Nellore Dt.</div>
+      </div>
+      <div class="p-box reveal" style="transition-delay:.15s">
+        <span class="p-side">Groom's Side</span>
+        <div class="p-names">Sri Kolleboina Srinivasarao<br>Smt. Laga Lakshmamma</div>
+        <div class="p-village">Udayagiri<br>Nellore District</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="sec-events sec-pad">
+    <div class="sec-title">
+      <span class="sec-title-top">Auspicious Ceremony</span>
+      <h2>వివాహ వేడుకలు</h2>
+      <div class="sec-title-line"></div>
+    </div>
+    <div class="events-wrap">
+
+      <!-- Wedding -->
+      <div class="ev-card reveal">
+        <div class="ev-head">
+          <div class="ev-emoji">🌺</div>
+          <div class="ev-head-text">
+            <div class="ev-head-en">Vivaaham — The Wedding</div>
+            <div class="ev-head-te">వివాహము</div>
+          </div>
+        </div>
+        <div class="ev-rows">
+          <div class="ev-row">
+            <div class="ev-ico-wrap">📅</div>
+            <div class="ev-info">
+              <span class="ev-info-lbl">Date &amp; Day</span>
+              <div class="ev-info-val">Thursday, <strong>7th May 2026</strong></div>
+            </div>
+          </div>
+          <div class="ev-row">
+            <div class="ev-ico-wrap">⏰</div>
+            <div class="ev-info">
+              <span class="ev-info-lbl">Muhurtham Time</span>
+              <div class="ev-info-val">
+                2:01 AM — 3:01 AM<br>
+                <span style="font-size:12px;color:rgba(253,244,224,.55)">(Early hours of Friday)</span><br>
+                Sumuhurtham: <strong>2:40 AM</strong>
+              </div>
+            </div>
+          </div>
+          <div class="ev-row">
+            <div class="ev-ico-wrap">📍</div>
+            <div class="ev-info">
+              <span class="ev-info-lbl">Venue</span>
+              <div class="ev-info-val">Bridegroom's Residence<br><strong>Udayagiri</strong></div>
+            </div>
+          </div>
+        </div>
+        <span class="nakshatra-pill">✨ Uttarabhadra Nakshatram · Kumbha Lagnam</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LUNCH -->
+  <section class="sec-lunch">
+    <div class="lunch-inner reveal">
+      <span class="lunch-emoji">🍽️</span>
+      <div class="lunch-title">Lunch Reception</div>
+      <div class="lunch-details">
+        <strong>7th May 2026</strong> &nbsp;·&nbsp; <strong>12:30 PM</strong><br>
+        At Bride's Residence, Udayagiri<br>
+        <span style="font-size:12.5px;color:rgba(253,244,224,.5);font-style:italic">All family &amp; friends are warmly welcome</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-om">🙏</span>
+    <div class="footer-te">మా పిన్ని పెండ్లికి రండి... రారండి!</div>
+    <div class="footer-te2">మీరాక కొరకు ఎదురుచూస్తూ... నాగ కేశ్ యాడ్స్</div>
+    <div class="footer-from">With Best Compliments From</div>
+    <div class="footer-names">
+      Ala Brothers · Challakolusu Brothers<br>Near &amp; Dear
+    </div>
+    <div class="footer-numbers">
+      <div class="footer-num">9963384905</div>
+      <div class="footer-num">9908108905</div>
+      <div class="footer-num">8008778397</div>
+    </div>
+    <div class="footer-stamp">కావేరి ♥ సుధాకర్ &nbsp;·&nbsp; 7 May 2026 &nbsp;·&nbsp; Udayagiri</div>
+    <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(212,148,42,.1);text-align:center;">
+      <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(212,148,42,.4);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:6px;">Designed &amp; Developed by</div>
+      <div style="font-family:'Cinzel Decorative',serif;font-size:14px;background:linear-gradient(135deg,#C8922A,#F0C84A,#FBE9AA,#F0C84A,#C8922A);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite;letter-spacing:2px;margin-bottom:8px;">Naga Malleswarao Rao</div>
+      <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;">
+        <a href="tel:9010394042" style="font-size:12px;color:rgba(212,148,42,.65);text-decoration:none;letter-spacing:.5px;transition:color .3s;" onmouseover="this.style.color='#F0C84A'" onmouseout="this.style.color='rgba(212,148,42,.65)'">📞 9010394042</a>
+        <a href="mailto:nmallesh30@gmail.com" style="font-size:12px;color:rgba(212,148,42,.65);text-decoration:none;letter-spacing:.5px;transition:color .3s;" onmouseover="this.style.color='#F0C84A'" onmouseout="this.style.color='rgba(212,148,42,.65)'">✉️ nmallesh30@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /main -->
+
+<script>
+/* ── Opening animation ── */
+function openInvitation(){
+  document.getElementById('opening').classList.add('hide');
+  setTimeout(()=>{
+    document.getElementById('opening').style.display='none';
+    const main=document.getElementById('main');
+    main.classList.add('show');
+    startPetals();
+    initScrollReveal();
+  },850);
+}
+
+/* ── Falling petals ── */
+const PETALS=['🌸','🌺','🌼','🌷','✿','❀'];
+function startPetals(){
+  const canvas=document.getElementById('petalsCanvas');
+  for(let i=0;i<22;i++) spawnPetal(canvas,i*350);
+}
+function spawnPetal(canvas,delay){
+  const el=document.createElement('div');
+  el.className='petal';
+  el.textContent=PETALS[Math.floor(Math.random()*PETALS.length)];
+  el.style.left=Math.random()*100+'%';
+  el.style.fontSize=(12+Math.random()*14)+'px';
+  const dur=8+Math.random()*10;
+  el.style.animationDuration=dur+'s';
+  el.style.animationDelay=delay+'ms';
+  canvas.appendChild(el);
+  // respawn
+  el.addEventListener('animationend',()=>{
+    el.style.left=Math.random()*100+'%';
+    el.style.animationDelay='0ms';
+    el.style.animationDuration=(8+Math.random()*10)+'s';
+    el.style.animation='none';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      el.style.animation='';
+    }));
+  });
+}
+
+/* ── Scroll reveal ── */
+function initScrollReveal(){
+  const els=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  },{threshold:.15});
+  els.forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>
